@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".FingerprintActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro de Huellas Dactilares"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Toque cada botón para registrar la huella correspondiente. Marque la casilla si el dedo está faltante."
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <!-- Pulgar -->
+        <LinearLayout
+            android:id="@+id/layoutThumb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInstructions">
+
+            <Button
+                android:id="@+id/btnThumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pulgar"
+                android:textSize="16sp"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbThumbMissing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faltante"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Índice -->
+        <LinearLayout
+            android:id="@+id/layoutIndex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutThumb">
+
+            <Button
+                android:id="@+id/btnIndex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Índice"
+                android:textSize="16sp"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbIndexMissing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faltante"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Medio -->
+        <LinearLayout
+            android:id="@+id/layoutMiddle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutIndex">
+
+            <Button
+                android:id="@+id/btnMiddle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Medio"
+                android:textSize="16sp"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbMiddleMissing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faltante"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Anular -->
+        <LinearLayout
+            android:id="@+id/layoutRing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutMiddle">
+
+            <Button
+                android:id="@+id/btnRing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anular"
+                android:textSize="16sp"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbRingMissing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faltante"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Meñique -->
+        <LinearLayout
+            android:id="@+id/layoutPinky"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutRing">
+
+            <Button
+                android:id="@+id/btnPinky"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meñique"
+                android:textSize="16sp"
+                android:padding="12dp" />
+
+            <CheckBox
+                android:id="@+id/cbPinkyMissing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faltante"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Continuar"
+            android:textSize="18sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutPinky" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
