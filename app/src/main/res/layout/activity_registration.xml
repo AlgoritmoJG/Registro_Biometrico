@@ -78,6 +78,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spinnerCountry" />
 
+        <TextView
+            android:id="@+id/tvSkipFingerprintInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ℹ️ Para Estados Unidos y Guatemala se omitirá el registro de huellas dactilares"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:background="@android:color/background_light"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerCity" />
+
         <Spinner
             android:id="@+id/spinnerCity"
             android:layout_width="0dp"
@@ -103,7 +120,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinnerCity" />
+            app:layout_constraintTop_toBottomOf="@id/tvSkipFingerprintInfo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,11 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -23,6 +25,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Spinner spinnerCountry;
     private Spinner spinnerCity;
     private Button btnContinue;
+    private TextView tvSkipFingerprintInfo;
     
     private String selectedCountry;
     private String selectedCity;
@@ -44,6 +47,7 @@ public class RegistrationActivity extends AppCompatActivity {
         spinnerCountry = findViewById(R.id.spinnerCountry);
         spinnerCity = findViewById(R.id.spinnerCity);
         btnContinue = findViewById(R.id.btnContinue);
+        tvSkipFingerprintInfo = findViewById(R.id.tvSkipFingerprintInfo);
     }
 
     private void setupSpinners() {
@@ -65,11 +69,13 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedCountry = (String) parent.getItemAtPosition(position);
                 updateCitySpinner(selectedCountry);
+                updateSkipFingerprintInfo();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 selectedCountry = null;
+                updateSkipFingerprintInfo();
             }
         });
 
@@ -103,6 +109,14 @@ public class RegistrationActivity extends AppCompatActivity {
         selectedCity = null;
     }
 
+    private void updateSkipFingerprintInfo() {
+        if ("Estados Unidos".equals(selectedCountry) || "Guatemala".equals(selectedCountry)) {
+            tvSkipFingerprintInfo.setVisibility(View.VISIBLE);
+        } else {
+            tvSkipFingerprintInfo.setVisibility(View.GONE);
+        }
+    }
+
     private boolean validateInput() {
         String name = etName.getText().toString().trim();
         
@@ -128,11 +142,29 @@ public class RegistrationActivity extends AppCompatActivity {
         String name = etName.getText().toString().trim();
         String currentDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
         
-        Intent intent = new Intent(this, FingerprintActivity.class);
-        intent.putExtra("name", name);
-        intent.putExtra("country", selectedCountry);
-        intent.putExtra("city", selectedCity);
-        intent.putExtra("registrationDate", currentDate);
-        startActivity(intent);
+        // Check if country is USA or Guatemala - skip fingerprint registration
+        if ("Estados Unidos".equals(selectedCountry) || "Guatemala".equals(selectedCountry)) {
+            // Skip fingerprint registration and go directly to iris
+            Intent intent = new Intent(this, IrisActivity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("country", selectedCountry);
+            intent.putExtra("city", selectedCity);
+            intent.putExtra("registrationDate", currentDate);
+            // Create empty fingerprint hashes for countries that skip fingerprint registration
+            ArrayList<String> emptyFingerprintHashes = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                emptyFingerprintHashes.add("faltante");
+            }
+            intent.putStringArrayListExtra("fingerprintHashes", emptyFingerprintHashes);
+            startActivity(intent);
+        } else {
+            // Normal flow - go to fingerprint registration
+            Intent intent = new Intent(this, FingerprintActivity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("country", selectedCountry);
+            intent.putExtra("city", selectedCity);
+            intent.putExtra("registrationDate", currentDate);
+            startActivity(intent);
+        }
     }
 }

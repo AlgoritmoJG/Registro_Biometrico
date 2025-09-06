@@ -204,6 +204,19 @@ public class CountryCityUtils {
         peruCities.add("Huancayo");
         peruCities.add("Tacna");
         countryCities.put("Perú", peruCities);
+
+        List<String> guatemalaCities = new ArrayList<>();
+        guatemalaCities.add("Ciudad de Guatemala");
+        guatemalaCities.add("Mixco");
+        guatemalaCities.add("Villa Nueva");
+        guatemalaCities.add("Petapa");
+        guatemalaCities.add("San Juan Sacatepéquez");
+        guatemalaCities.add("Quetzaltenango");
+        guatemalaCities.add("Villa Canales");
+        guatemalaCities.add("Escuintla");
+        guatemalaCities.add("Santa Catarina Pinula");
+        guatemalaCities.add("San Miguel Petapa");
+        countryCities.put("Guatemala", guatemalaCities);
     }
 
     public static List<String> getCountries() {
